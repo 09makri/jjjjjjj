@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/foley/mushroom/mushroom4.png" type="Texture" id=1]
+[ext_resource path="res://light animted.tres" type="Texture" id=2]
+
+[node name="mushroom4" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 8.93452, 10.7214 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+color = Color( 0.458824, 1, 1, 1 )
+shadow_enabled = true

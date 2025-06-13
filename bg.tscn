@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/mini bush.png" type="Texture" id=2]
+[ext_resource path="res://timer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://eye.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/bg.png" type="Texture" id=5]
+
+[node name="bg" type="Node2D"]
+z_index = -20
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( 528.664, 48.1833 )
+z_index = -20
+texture = ExtResource( 5 )
+offset = Vector2( -300.655, 98.4984 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -20
+
+[node name="Bg2" type="Sprite" parent="."]
+position = Vector2( 528.664, 143.525 )
+z_index = -20
+texture = ExtResource( 5 )
+offset = Vector2( -300.655, 98.4984 )
+
+[node name="MiniBush" type="Sprite" parent="."]
+position = Vector2( 85.3831, 159.638 )
+rotation = -1.57079
+z_index = -9
+texture = ExtResource( 2 )
+
+[node name="MiniBush2" type="Sprite" parent="."]
+position = Vector2( 512.12, 158.087 )
+rotation = -2.35619
+z_index = -9
+texture = ExtResource( 2 )
+
+[node name="eye" parent="." instance=ExtResource( 4 )]
+position = Vector2( 265.013, 169.917 )
+z_index = -20
+
+[node name="timer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5.19135, 5.42728 )
+z_index = -19

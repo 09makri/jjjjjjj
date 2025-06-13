@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="drop" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1
+lifetime = 2.5
+lifetime_randomness = 0.09
+gravity = Vector2( 0, 300 )

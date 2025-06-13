@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_crunch_44146.mp3-ee332f169f8a0b8bc6568c4fc0f5b110.mp3str"
+
+[deps]
+
+source_file="res://sound/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_crunch_44146.mp3"
+dest_files=[ "res://.import/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_crunch_44146.mp3-ee332f169f8a0b8bc6568c4fc0f5b110.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

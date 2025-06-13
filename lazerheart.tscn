@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/laserart/beam.png" type="Texture" id=1]
+[ext_resource path="res://lazerheart.gd" type="Script" id=2]
+
+[node name="lazerheart" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="beam" type="Sprite" parent="."]
+position = Vector2( 51.0031, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 100, 16 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 5
+
+[node name="end" type="Position2D" parent="."]
+position = Vector2( 100.002, 0 )

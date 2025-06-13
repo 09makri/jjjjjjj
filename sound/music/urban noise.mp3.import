@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/urban noise.mp3-ceec6a7ff2a63fec8c73d2af44f616e6.mp3str"
+
+[deps]
+
+source_file="res://sound/music/urban noise.mp3"
+dest_files=[ "res://.import/urban noise.mp3-ceec6a7ff2a63fec8c73d2af44f616e6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

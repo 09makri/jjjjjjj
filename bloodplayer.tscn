@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/particals/cikleululu.png" type="Texture" id=1]
+[ext_resource path="res://CPUParticles2D.gd" type="Script" id=2]
+
+[node name="blood" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -8
+amount = 32
+lifetime = 0.2
+explosiveness = 1.0
+texture = ExtResource( 1 )
+spread = 25.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 0.5
+color = Color( 1, 0.564706, 0.564706, 1 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="CPUParticles2D"]
+wait_time = 0.15
+one_shot = true
+autostart = true
+[connection signal="timeout" from="CPUParticles2D/Timer" to="CPUParticles2D" method="_on_Timer_timeout"]

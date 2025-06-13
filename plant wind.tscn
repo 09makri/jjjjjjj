@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://art/foley/plants/Sprite-0004.png" type="Texture" id=1]
+[ext_resource path="res://art/foley/plants/Sprite-0006.png" type="Texture" id=2]
+[ext_resource path="res://art/foley/plants/Sprite-0008.png" type="Texture" id=3]
+[ext_resource path="res://art/foley/plants/Sprite-0002.png" type="Texture" id=4]
+[ext_resource path="res://art/foley/plants/Sprite-0005.png" type="Texture" id=5]
+[ext_resource path="res://art/foley/plants/Sprite-0007.png" type="Texture" id=6]
+[ext_resource path="res://art/foley/plants/Sprite-0003.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[node name="plant wind" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+centered = false

@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 5.png" type="Texture" id=1]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 1.png" type="Texture" id=2]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 2.png" type="Texture" id=3]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 7.png" type="Texture" id=4]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 6.png" type="Texture" id=5]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 4.png" type="Texture" id=6]
+[ext_resource path="res://art/anemy/bullets/vbullet/done/v bullet 3.png" type="Texture" id=7]
+[ext_resource path="res://Vbullet.gd" type="Script" id=8]
+[ext_resource path="res://roundspinnbulletformation.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "active",
+"speed": 9.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Vbullet" type="KinematicBody2D"]
+script = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "active"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+disabled = true
+
+[node name="vbullethit" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vbullethit"]
+polygon = PoolVector2Array( -20.2531, -18.6362, -3.63607, 19.5476, 3.78855, 19.7244, 20.5823, -18.6362, 6.61698, -19.5201, 1.31368, 6.99646, -10, -20.4039 )
+disabled = true
+
+[node name="roundspinnbullet" parent="." instance=ExtResource( 9 )]
+position = Vector2( -12.9809, -13.9894 )
+
+[node name="roundspinnbullet2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -8.00227, -0.0177665 )
+
+[node name="roundspinnbullet3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -0.00384426, 14.0075 )
+
+[node name="roundspinnbullet4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 7.96759, 0.0122685 )
+
+[node name="roundspinnbullet5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 12.9868, -14.0132 )
+[connection signal="body_entered" from="vbullethit" to="." method="_on_vbullethit_body_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://art/fx/new room/new room explo2.png" type="Texture" id=1]
+[ext_resource path="res://art/fx/new room/new room explo3.png" type="Texture" id=2]
+[ext_resource path="res://art/fx/new room/new room explo6.png" type="Texture" id=3]
+[ext_resource path="res://art/fx/new room/new room explo7.png" type="Texture" id=4]
+[ext_resource path="res://art/fx/new room/new room explo5.png" type="Texture" id=5]
+[ext_resource path="res://art/fx/new room/new room explo4.png" type="Texture" id=6]
+[ext_resource path="res://art/fx/new room/new room explo1.png" type="Texture" id=7]
+[ext_resource path="res://newroomexplo.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "active",
+"speed": 13.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 0, -16, 4, -16, 7, -16, 7, -14, 8, -14, 8, -13, 11, -13, 11, -12, 12, -12, 12, -10, 15, -10, 15, -11, 16, -11, 16, -8, 15, -8, 15, -3, 16, -3, 16, 5, 15, 5, 15, 6, 16, 6, 16, 8, 15, 8, 15, 9, 14, 9, 14, 11, 12, 11, 12, 12, 10, 12, 10, 13, 9, 13, 9, 14, 8, 14, 8, 15, 6, 15, 6, 16, 0, 16, 0, 24, 32, 24, 32, -16, 32, -24, 0, -24 )
+
+[node name="newroomexplo" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "active"
+
+[node name="newroomcoll" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="newroomcoll"]
+position = Vector2( 32.7492, 0 )
+shape = SubResource( 2 )
+
+[node name="exploTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 3 )
+[connection signal="body_entered" from="newroomcoll" to="." method="_on_newroomcoll_body_entered"]
+[connection signal="timeout" from="exploTimer" to="." method="_on_exploTimer_timeout"]

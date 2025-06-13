@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://big grass.gd" type="Script" id=1]
+[ext_resource path="res://mushroom1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://big mushroom1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mushroom3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://big grass.tscn" type="PackedScene" id=5]
+
+[node name="mushrooms" type="Node2D"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="mushroom1" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 336, 176 )
+rotation = -1.57079
+
+[node name="big mushroom1" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 80 )
+scale = Vector2( -1, 1 )
+
+[node name="mushroom3" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 256 )
+rotation = -3.14159
+
+[node name="big grass" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 208, 208 )
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="big grass2" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 208, 48 )
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="big grass3" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 464, 144.087 )
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="big grass4" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 291.827, 272 )
+z_index = 2
+script = ExtResource( 1 )

@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/foley/lokers/lokkers2.png" type="Texture" id=1]
+[ext_resource path="res://art/foley/lokers/lokkers4.png" type="Texture" id=2]
+[ext_resource path="res://art/foley/lokers/lokkers5.png" type="Texture" id=3]
+[ext_resource path="res://art/foley/lokers/lokkers1.png" type="Texture" id=4]
+[ext_resource path="res://art/foley/foreground.png" type="Texture" id=5]
+[ext_resource path="res://art/foley/lokers/lokkers6.png" type="Texture" id=6]
+[ext_resource path="res://art/foley/lokers/lokkers3.png" type="Texture" id=7]
+[ext_resource path="res://art/foley/out.png" type="Texture" id=8]
+[ext_resource path="res://art/foley/endagiant1.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="forground" type="Node2D"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 33.6847, 10.329 )
+z_index = 3000
+frames = SubResource( 22 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 519.006, 198.373 )
+z_index = 3000
+frames = SubResource( 22 )
+playing = true
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 2000
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Out" type="Sprite" parent="."]
+position = Vector2( -297.667, 190.373 )
+z_index = 2000
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Out2" type="Sprite" parent="."]
+position = Vector2( 831.537, 174.354 )
+z_index = 2000
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Out3" type="Sprite" parent="."]
+position = Vector2( 275.261, -298.475 )
+z_index = 2000
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Out4" type="Sprite" parent="."]
+position = Vector2( 259.827, 599.89 )
+z_index = 2000
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="end" type="Sprite" parent="."]
+position = Vector2( 263.707, 270.918 )
+z_index = 3000
+texture = ExtResource( 9 )

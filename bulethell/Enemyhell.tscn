@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://bulethell/Enemyhell.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://art/anemy/oneeye/oneeyeesmall4.png" type="Texture" id=3]
+[ext_resource path="res://art/anemy/oneeye/oneeyeesmall1.png" type="Texture" id=4]
+[ext_resource path="res://art/anemy/oneeye/oneeyeesmall3.png" type="Texture" id=5]
+[ext_resource path="res://art/anemy/oneeye/oneeyeesmall2.png" type="Texture" id=6]
+[ext_resource path="res://art/anemy/oneeye/onesmall eyes hit.png" type="Texture" id=7]
+[ext_resource path="res://sound/hits/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.wav" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "active",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.69682
+
+[node name="Enemy" type="Node2D" groups=["enemie"]]
+script = ExtResource( 1 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Rotater" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "active"
+frame = 2
+playing = true
+
+[node name="groupTimer" type="Timer" parent="."]
+
+[node name="hit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="PositionTimer" type="Timer" parent="."]
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="groupTimer" to="." method="_on_groupTimer_timeout"]
+[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]
+[connection signal="timeout" from="PositionTimer" to="." method="_on_PositionTimer_timeout"]

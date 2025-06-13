@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Iba.mp3-d9013e8db9ccf8d4b8b4b7f7828064d9.mp3str"
+
+[deps]
+
+source_file="res://sound/music/Iba.mp3"
+dest_files=[ "res://.import/Iba.mp3-d9013e8db9ccf8d4b8b4b7f7828064d9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

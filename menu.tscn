@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://art/fonts/Extrude.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu.gd" type="Script" id=2]
+[ext_resource path="res://sound/music/LANDIN~1.WAV" type="AudioStream" id=3]
+[ext_resource path="res://art/particals/cikleululu.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="Animation" id=13]
+resource_name = "playselect"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("playblip:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "changescene"
+} ]
+}
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 215.0
+margin_top = 116.0
+margin_right = 317.0
+margin_bottom = 184.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="playblip" type="Sprite" parent="CenterContainer/VBoxContainer"]
+visible = false
+position = Vector2( -17.2252, 11.2145 )
+texture = ExtResource( 4 )
+
+[node name="quitblip" type="Sprite" parent="CenterContainer/VBoxContainer"]
+visible = false
+position = Vector2( -16.7034, 47.5119 )
+texture = ExtResource( 4 )
+
+[node name="PLAy" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "P L a y"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 102.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+text = "q u i t"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer"]
+anims/playselect = SubResource( 13 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -7.0
+autoplay = true
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/PLAy" to="." method="_on_PLAy_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/VBoxContainer/PLAy" to="." method="_on_PLAy_mouse_exited"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PLAy" to="." method="_on_PLAy_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

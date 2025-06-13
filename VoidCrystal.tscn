@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://art/anemy/void crystal/void crystal fix1.png" type="Texture" id=1]
+[ext_resource path="res://art/anemy/void crystal/void crystal fix2.png" type="Texture" id=2]
+[ext_resource path="res://art/anemy/void crystal/void crystal fix3.png" type="Texture" id=3]
+[ext_resource path="res://art/anemy/void crystal/void crystal fix4.png" type="Texture" id=4]
+[ext_resource path="res://art/anemy/void crystal/void crystal fix5.png" type="Texture" id=5]
+[ext_resource path="res://sound/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_crunch_44146,zapsplat_impacts_body_hit_[...]/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.wav" type="AudioStream" id=6]
+[ext_resource path="res://VoidCrystal.gd" type="Script" id=7]
+[ext_resource path="res://guncrystal.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "active",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.78855
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.37954
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4.41719, 1.8243 )
+
+[node name="VoidCrystal" type="KinematicBody2D"]
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "active"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="hitboxcrystal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxcrystal"]
+shape = SubResource( 3 )
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="gun" type="KinematicBody2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gun"]
+position = Vector2( 16.7054, 0 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="muzzle" type="Position2D" parent="gun"]
+position = Vector2( 1.90735e-06, 0 )
+__meta__ = {
+"_gizmo_extents_": 3.0
+}
+
+[node name="shootTimer" type="Timer" parent="gun"]
+wait_time = 3.0
+autostart = true
+[connection signal="body_entered" from="hitboxcrystal" to="." method="_on_hitboxcrystal_body_entered"]
+[connection signal="shooting" from="gun" to="." method="_on_gun_shooting"]
+[connection signal="timeout" from="gun/shootTimer" to="gun" method="_on_shootTimer_timeout"]

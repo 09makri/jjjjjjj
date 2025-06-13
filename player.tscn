@@ -1,0 +1,289 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://art/player/dead skulls/run/blue running7.png" type="Texture" id=2]
+[ext_resource path="res://art/player/dead skulls/run/blue running8.png" type="Texture" id=3]
+[ext_resource path="res://art/player/dead skulls/skull2.png" type="Texture" id=4]
+[ext_resource path="res://art/player/idle/blue idle4.png" type="Texture" id=5]
+[ext_resource path="res://art/player/dead skulls/run/blue running3.png" type="Texture" id=6]
+[ext_resource path="res://art/player/dead skulls/run/blue running2.png" type="Texture" id=7]
+[ext_resource path="res://art/player/idle/blue idle2.png" type="Texture" id=8]
+[ext_resource path="res://art/player/dead skulls/run/blue running1.png" type="Texture" id=9]
+[ext_resource path="res://art/player/idle/blue idle1.png" type="Texture" id=10]
+[ext_resource path="res://art/player/dead skulls/run/blue running4.png" type="Texture" id=11]
+[ext_resource path="res://art/player/idle/blue idle3.png" type="Texture" id=12]
+[ext_resource path="res://art/player/dead skulls/run/blue running5.png" type="Texture" id=13]
+[ext_resource path="res://art/player/dead skulls/run/blue running6.png" type="Texture" id=14]
+[ext_resource path="res://art/player/hit/player hit2.png" type="Texture" id=15]
+[ext_resource path="res://art/player/hit/player hit1.png" type="Texture" id=16]
+[ext_resource path="res://light animted.tres" type="Texture" id=17]
+[ext_resource path="res://art/player/jump/jump5.png" type="Texture" id=18]
+[ext_resource path="res://art/player/jump/jump4.png" type="Texture" id=19]
+[ext_resource path="res://art/player/jump/jump1.png" type="Texture" id=20]
+[ext_resource path="res://art/player/jump/jump3.png" type="Texture" id=21]
+[ext_resource path="res://art/player/jump/jump2.png" type="Texture" id=22]
+[ext_resource path="res://art/hud/soul ico/soul icfadeo2.png" type="Texture" id=23]
+[ext_resource path="res://art/hud/soul ico/soul ico1.png" type="Texture" id=24]
+[ext_resource path="res://gridsnappnew.gd" type="Script" id=25]
+[ext_resource path="res://pivot.gd" type="Script" id=26]
+[ext_resource path="res://art/fonts/Extrude.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://sound/swoosh.wav" type="AudioStream" id=28]
+[ext_resource path="res://sound/darkershoos.wav" type="AudioStream" id=29]
+[ext_resource path="res://sound/hits/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.wav" type="AudioStream" id=30]
+[ext_resource path="res://flutebody.tscn" type="PackedScene" id=31]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=32]
+[ext_resource path="res://sound/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_crunch_44146.mp3" type="AudioStream" id=33]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "hit",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "jump",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4.94598, 5.99209 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4.73948, 6.11903 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 27 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "blink lable point"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="player" type="KinematicBody2D" groups=["Player"]]
+z_index = 3
+collision_layer = 33
+collision_mask = 991
+script = ExtResource( 1 )
+
+[node name="flutebody" parent="." instance=ExtResource( 31 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.125, 0 )
+frames = SubResource( 1 )
+animation = "jump"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.209395, 1.92959 )
+shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+self_modulate = Color( 0.9, 0.9, 0.9, 1 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 17 )
+range_z_max = 8
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="jumptimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+
+[node name="invincebilityTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( -0.315334, 1.94457 )
+shape = SubResource( 3 )
+
+[node name="raycastcontainer" type="Position2D" parent="."]
+visible = false
+
+[node name="groundcast" type="RayCast2D" parent="raycastcontainer"]
+position = Vector2( -3.83905, 7.38139 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="leftcast" type="RayCast2D" parent="raycastcontainer"]
+position = Vector2( -3.31082, 0.0662155 )
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 14 )
+
+[node name="rightcast" type="RayCast2D" parent="raycastcontainer"]
+position = Vector2( 3.04596, -0.0662155 )
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 14 )
+
+[node name="wallcast" type="Position2D" parent="."]
+visible = false
+
+[node name="wallcastleft" type="RayCast2D" parent="wallcast"]
+position = Vector2( -4.36541, 2.00574 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+
+[node name="wallcastright" type="RayCast2D" parent="wallcast"]
+position = Vector2( 4.3125, 2.18622 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -18.0312
+margin_top = -21.7435
+margin_right = 21.9688
+margin_bottom = -7.74353
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timerdashgrav" type="Timer" parent="."]
+
+[node name="soulanim" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -9.24307 )
+frames = SubResource( 4 )
+animation = "off"
+
+[node name="pivot" type="Position2D" parent="."]
+script = ExtResource( 26 )
+
+[node name="cameraOffset" type="Position2D" parent="pivot"]
+position = Vector2( 52.3842, 0 )
+
+[node name="gridsnapp" type="Position2D" parent="."]
+script = ExtResource( 25 )
+
+[node name="Camera2D" type="Camera2D" parent="gridsnapp"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 300
+smoothing_enabled = true
+smoothing_speed = 6.0
+editor_draw_limits = true
+
+[node name="Label2" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -7.01539
+margin_top = -35.4678
+margin_right = 8.98461
+margin_bottom = -19.4678
+custom_fonts/font = SubResource( 5 )
+text = "+1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/blink lable point" = SubResource( 6 )
+
+[node name="shoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+volume_db = -3.925
+bus = "shoosh"
+
+[node name="contact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+
+[node name="playerwalk" type="AudioStreamPlayer" parent="."]
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="dashfxpoint" type="Position2D" parent="."]
+position = Vector2( 8, 0 )
+
+[node name="deadtimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = -6.191
+script = ExtResource( 32 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+volume_db = 2.476
+script = ExtResource( 32 )
+
+[connection signal="timeout" from="invincebilityTimer" to="." method="_on_invincebilityTimer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="deadtimer" to="." method="_on_deadtimer_timeout"]

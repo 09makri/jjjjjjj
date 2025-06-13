@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.mp3-f42455592f4833ec8f2b06d13ccf08e3.mp3str"
+
+[deps]
+
+source_file="res://sound/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.mp3"
+dest_files=[ "res://.import/zapsplat_impacts_body_hit_baseball_bat_hard_whack_crack_squelchy_bloody_005_44151.mp3-f42455592f4833ec8f2b06d13ccf08e3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
